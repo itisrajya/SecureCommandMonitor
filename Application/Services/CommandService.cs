@@ -6,13 +6,17 @@ namespace Application.Services
 {
 	public class CommandService : ICommandService
 	{
-		private readonly List<string> _allowedCommands = new()
+		private readonly List<string> _allowedCommands;
+
+		public CommandService(AppSettings settings)
 		{
-			"ipconfig",
-			"whoami",
-			"netstat",
-			"tasklist"
-		};
+			_allowedCommands = settings.AllowedCommands;
+		}
+
+		public List<string> GetAllowedCommands()
+		{
+			return _allowedCommands;
+		}
 
 		public CommandResult Execute(string command)
 		{

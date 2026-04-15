@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces;
+using Domain.Models;
 
 namespace Infrastructure.Services
 {
@@ -20,6 +21,16 @@ namespace Infrastructure.Services
 			}
 
 			return dict;
+		}
+
+		public AppSettings MapToSettings(Dictionary<string, string> config)
+		{
+			return new AppSettings
+			{
+				AllowedCommands = config.ContainsKey("AllowedCommands")
+					? config["AllowedCommands"].Split(',').Select(x => x.Trim().ToLower()).ToList()
+					: new List<string>()
+			};
 		}
 	}
 }
