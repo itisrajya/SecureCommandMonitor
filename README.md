@@ -51,6 +51,7 @@ To=receiver-email@gmail.com
 Password=your-app-password
 SmtpServer=smtp.gmail.com
 Port=587
+AllowedCommands=ipconfig,netstat,whoami,tasklist
 ```
 
 ⚠️ Use **App Password**, not your real Gmail password.
